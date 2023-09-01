@@ -1,0 +1,8 @@
+function is-muted {
+  if [ $(pulseaudio-ctl | grep "Is source muted" | wc -c) -eq 47 ]
+  then
+    echo "Muted"
+  else
+    echo "Unmuted"
+  fi
+}

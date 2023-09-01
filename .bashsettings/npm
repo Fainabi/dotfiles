@@ -1,0 +1,16 @@
+alias nvm-init='source /usr/share/nvm/init-nvm.sh'
+alias cnpm="npm --registry=https://registry.npmmirror.com \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npmmirror.com/mirrors/node \
+--userconfig=$HOME/.cnpmrc"
+
+export npm_config_prefix="$HOME/.local"
+
+function npm-proxyon() {
+	npm config set proxy=127.0.0.1:7890
+	npm config set https-proxy=127.0.0.1:7890
+}
+function npm-proxyoff() {
+	npm config rm proxy
+	npm config rm https-proxy
+}

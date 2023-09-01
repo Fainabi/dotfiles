@@ -1,0 +1,29 @@
+function setp() {
+  export http_proxy='http://127.0.0.1:7890'
+  export https_proxy='http://127.0.0.1:7890'
+  export all_proxy='socks5://127.0.0.1:7890'
+}
+function unsetp() {
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+}
+
+function proxyon() {
+  if [ -v CONDA_EXE ]; then 
+    echo 'Conda on, proxy setting may not work globally'
+  fi
+  gsettings set org.gnome.system.proxy mode 'manual'
+}
+function proxyoff() {
+  if [ -v CONDA_EXE ]; then 
+    echo 'Conda on, proxy setting may not work globally'
+  fi
+  gsettings set org.gnome.system.proxy mode 'none'
+}
+function proxynow() {
+  if [ -v CONDA_EXE ]; then
+    echo 'Conda on, proxy setting may not work globally'
+  fi
+  gsettings get org.gnome.system.proxy mode
+}

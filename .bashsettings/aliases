@@ -1,0 +1,5 @@
+alias ls=exa
+alias bat="bat --theme=ansi"
+alias hx=helix
+alias condaon='source /opt/anaconda/bin/activate'
+alias starship.start='eval "$(starship init bash)"'

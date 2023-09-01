@@ -1,0 +1,7 @@
+if [ $DESKTOP_SESSION = "leftwm" ]
+then
+  export GDK_DPI_SCALE=1.35
+  export WITH_LEFTWM=1
+  export GTK_USE_PORTAL=1
+  
+fi

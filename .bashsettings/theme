@@ -1,0 +1,35 @@
+GTK_THEME=Adwaita:dark
+
+function theme() {
+	case $1 in
+		'dark')
+			echo dark theme on 
+			gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+			gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+			gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+			export GTK_THEME=Adwaita:dark
+			emacstheme 'spacemacs-dark'
+		;;
+		'light')
+			echo light theme on 
+			gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+			gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+			gsettings set org.gnome.desktop.interface color-scheme 'default'
+			export GTK_THEME=Adwaita
+			emacstheme 'spacemacs-light'
+		;;
+		'now')
+			gsettings get org.gnome.desktop.interface gtk-theme
+		;;
+		*)
+			echo no such theme setting, try 'light' or 'dark' ;;
+	esac
+}
+
+function emacstheme() {
+	client_list=`pgrep emacs`
+	if [ $? -eq 0 ]; then
+		emacsclient -e "(load-theme '$1 t)"
+	fi
+	return 0
+}

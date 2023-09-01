@@ -1,0 +1,63 @@
+alias pdflatex='pdflatex -interaction=batchmode'
+alias latexmk='latexmk -pdflatex -quiet'
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+
+function tex-install() {
+bash <<-EOF
+    set -e
+    echo "download $1.zip from https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/$1.zip to ~/texmf/tex/latex"
+    cd ~/texmf/tex/latex
+    curl -O "https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/$1.zip"
+    unzip -o $1.zip
+    cd $1
+    if [ ! -f $1.sty ] && [ -f $1.ins ]; then
+        latex $1.ins
+    else
+        echo "no $1.sty or $1.ins found, maybe need manipulation"
+    fi
+EOF
+}
+
+function tex-install-font() {
+bash <<EOF
+    set -e
+    echo "download $1.zip from https://mirrors.tuna.tsinghua.edu.cn/CTAN/fonts/$1.zip to ~/texmf/tex/latex"
+    cd ~/texmf/tex/latex
+    curl -O "https://mirrors.tuna.tsinghua.edu.cn/CTAN/fonts/$1.zip"
+    unzip -o $1.zip
+    cd $1
+    if [ -d opentype ]; then
+        ln -s opentype ~/texmf/fonts/opentype/$1
+    elif [ -d fonts ]; then
+        ln -s fonts ~/texmf/fonts/opentype/$1/
+    else
+        echo "no opentype of fonts directory"
+    fi
+EOF
+}
+
+function tex-mk() {
+    filename=$1
+    echo "try compiling $1.tex"
+    if [ ! -f "$1.tex" ]; then
+        echo "no such file $1.tex"
+        return 1
+    fi
+    pdflatex $1 1>/dev/null
+    [ $? == 1 ] && echo "pdflatex error, check $1.log" && return
+    bibtex $1 #1>/dev/null
+    [ $? == 1 ] && echo "bibtex error." && return
+    pdflatex $1 1>/dev/null
+    pdflatex $1 1>/dev/null
+    echo "end."
+}
+
+function tex-clean() {
+    filetoclean=(*.aux *.bbl *.bcf *.blg *.idx *.ind *.lof *.lot *.toc *.out *.acn *.acr *.alg *.log *.glg *.glo *.gls *.ist *.fls)
+    for f in ${filetoclean[@]}; do
+        if [ -e $f ]; then
+            rm $f
+        fi
+    done
+}
+

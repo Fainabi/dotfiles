@@ -1,0 +1,4 @@
+PYPI_TSINGHUA=https://pypi.tuna.tsinghua.edu.cn/simple
+JULIAUP_SERVER="https://mirrors.tuna.tsinghua.edu.cn/julia-releases/bin/"
+TUNA_CTAN=https://mirrors.tuna.tsinghua.edu.cn/CTAN/
+JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia

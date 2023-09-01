@@ -1,0 +1,24 @@
+function right-monitor-scale() {
+	#xrandr --output eDP-1 --mode 2560x1600 --scale 0.9999x0.9999 --fb 5152x1600 --pos 0x0
+	#xrandr --output HDMI-1 --mode 1920x1080 --scale 1.35x1.35 --pos 2560x0
+	xrandr --output HDMI-1 --mode 1920x1080 --scale 1.35x1.35 --pos 2560x0
+	xrandr --output eDP-1 --scale 0.9999x0.9999
+}
+
+function right-monitor() {
+	factor=${1:"1.33"}
+	xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --pos 2560x0
+	xrandr --output eDP-1
+}
+
+function up-monitor-scale() {
+	xrandr --output eDP-1 --mode 2560x1600 --scale 1x1 --fb 2560x4116 --pos 0x1436
+	xrandr --output HDMI-1 --mode 1920x1080 --scale 1.33x1.33 --pos 0x0
+}
+
+
+function up-monitor() {
+	xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --fb 2560x2680 --pos 0x0
+	xrandr --output eDP-1 --mode 2560x1600 --scale 1x1 --pos 0x1080
+}
+
