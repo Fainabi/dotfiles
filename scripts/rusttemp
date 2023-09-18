@@ -1,0 +1,66 @@
+#!/bin/bash
+
+cat <<EOF
+fn main() {
+    let mut reader = Reader::new();
+    for _ in 0..reader.readval::<usize>() {
+    
+    }
+}
+
+
+// boilerplate for reader
+use std::io;
+use std::fmt::Debug;
+use std::str::FromStr;
+
+struct Reader {
+    buffer: String,
+    stdin: io::Stdin,
+}
+
+#[allow(dead_code)]
+impl Reader {
+    fn new() -> Self {
+        Self {
+            buffer: String::new(),
+            stdin: io::stdin(),
+        }
+    }
+
+    fn readval<T>(&mut self) -> T
+    where
+        T: FromStr,
+        <T as FromStr>::Err: Debug,
+    {
+        self.buffer.clear();
+        self.stdin.read_line(&mut self.buffer).unwrap();
+        self.buffer.trim().parse::<T>().unwrap()
+    }
+
+    fn readvec<T>(&mut self) -> Vec<T>
+    where
+        T: FromStr,
+        <T as FromStr>::Err: Debug,
+    {
+        self.buffer.clear();
+        self.stdin.read_line(&mut self.buffer).unwrap();
+        self.buffer
+            .trim()
+            .split(' ')
+            .map(|s| s.parse::<T>().unwrap())
+            .collect()
+    }
+
+
+    fn readline(&mut self) -> String {
+        let mut line = String::new();
+        self.stdin.read_line(&mut line).unwrap();
+
+        line
+    }
+}
+EOF
+
+
+
