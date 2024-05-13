@@ -1,1 +1,19 @@
 theme = "base16_transparent"
+
+[editor.statusline]
+right = ["selections", "position", "spacer", "position-percentage"]
+
+
+[keys.insert]
+"C-n" = "move_line_down"
+"C-p" = "move_line_up"
+"C-a" = "goto_line_start"
+"C-e" = ["goto_line_end", "move_char_right"]
+"C-f" = "move_char_right"
+"C-b" = "move_char_left"
+"A-f" = ["move_next_word_start", "move_char_right"]
+"A-b" = "move_prev_word_start"
+"C-v" = "page_down"
+"A-v" = "page_up"
+"C-S-backspace" = ["extend_line_below", "delete_selection_noyank"]
+
