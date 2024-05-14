@@ -1,7 +1,7 @@
 theme = "base16_transparent"
 
 [editor.statusline]
-right = ["selections", "position", "spacer", "position-percentage"]
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "position-percentage"]
 
 
 [keys.insert]
@@ -16,4 +16,5 @@ right = ["selections", "position", "spacer", "position-percentage"]
 "C-v" = "page_down"
 "A-v" = "page_up"
 "C-S-backspace" = ["extend_line_below", "delete_selection_noyank"]
+"C-l" = "align_view_center"
 

@@ -7,3 +7,5 @@ The following dotfiles settings are included:
   - `alacritty`
   - `leftwm`
   - `helix`
+  - `nvim`
+  - `zellij`
