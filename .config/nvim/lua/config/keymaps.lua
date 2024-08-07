@@ -25,7 +25,7 @@ map("n", "<leader>b<tab>", "<cmd>e #<cr>", { desc = "go to last buffer" })
 -- map("n", "<C-c>", "gcc", { desc = "Comment a line" })
 
 -- neoscroll
-neoscroll = require("neoscroll")
+local neoscroll = require("neoscroll")
 neoscroll.setup({
   mappings = { -- Keys to be mapped to their corresponding default scrolling animation
     "<C-u>",

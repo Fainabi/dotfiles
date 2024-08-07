@@ -23,3 +23,4 @@ done
 
 # local binaries
 PATH="$HOME/.local/bin:$PATH"
+

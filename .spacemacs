@@ -666,6 +666,8 @@ before packages are loaded."
   (add-hook 'magit-section-mode-hook 'visual-line-mode)
 
   ;; (magit-add-section-hook 'visual-line-mode t)
+  (add-hook 'c-mode-hook 'lsp)
+  (add-hook 'c++-mode-hook 'lsp)
 
   (server-start)
 )
@@ -683,6 +685,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af" "7fd8b914e340283c189980cd1883dbdef67080ad1a3a9cc3df864ca53bdc89cf" default))
  '(org-agenda-files '("~/Documents/plans/2023/learning_plan.org"))
  '(package-selected-packages
    '(proof-general evil-org gnuplot helm-org-rifle htmlize org-cliplink org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-category-capture org-rich-yank magit-section emacsql pdf-view-restore pdf-tools tablist cmake-mode helm-ctest unicode-fonts ucs-utils font-utils persistent-soft pcache conda anaconda-mode blacken code-cells cython-mode helm-pydoc importmagic epc ctable concurrent deferred live-py-mode nose pip-requirements pipenv load-env-vars pippel poetry transient py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc stickyfunc-enhance xcscope yapfify julia-repl lsp-julia julia-mode lsp-mode evil-easymotion treemacs-evil ws-butler writeroom-mode winum which-key volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired toml-mode toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc ron-mode restart-emacs request rainbow-delimiters racer quickrun popwin pcre2el password-generator paradox overseer org-superstar opencl-mode open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio glsl-mode font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word cuda-mode column-enforce-mode clean-aindent-mode centered-cursor-mode cargo auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
